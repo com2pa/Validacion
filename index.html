@@ -26,8 +26,8 @@
         </div>       
         <div class="input-div" class="form-input">
             <!-- country codes (ISO 3166) and Dial codes. -->
-            <select name="countryCode" id="countries">
-                <option  value="" disabled Selected >Selecciona un pais</option>
+            <select name="countryCode" id="countries" class="form-input">
+                <option  value="" disabled Selected  >Selecciona un pais</option>
                 <option data-countryCode="GB" value="44" >UK (+44)</option>
                 <option data-countryCode="US" value="1">USA (+1)</option>
                 <option data-countryCode="DZ" value="213">Algeria (+213)</option>
@@ -247,10 +247,12 @@
                
             </select>
         </div>
-        <p> Debe de selecionar un pais</p>
+        <p class="informacion"> Debe de selecionar un pais</p>
         <div class="input-div">
-            <span id="phone-code">+##</span>
-            <input type="tel" name="" id="phone" placeholder="Numero de telefono" class="form-input">
+            <div id="phone-container">
+                <span id="phone-code">+##</span>
+                <input type="tel" name="" id="phone" placeholder="Numero de telefono" class="form-input">
+            </div>
             <p class="informacion">
                 Solo acepta numeros
             </p>
