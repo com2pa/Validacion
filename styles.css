@@ -67,11 +67,17 @@ body{
     width: 100%;
 }
 #form-btn{
-    background-color:#052e16;
+    /* background-color:#052e16; */
     padding: 1rem;
     color:#fff;
     cursor: pointer;
     border-radius: 0.5rem;
+    background-color: blue;
+}
+
+#form-btn:disabled{
+    opacity: 0.5;
+    cursor:not-allowed
 }
 .correct{
     outline:2px solid blue ;
@@ -89,6 +95,7 @@ body{
     display: block
 ;
 }
+
 @media (min-width:640px){
     #form{
         width: 60%;

@@ -14,6 +14,8 @@ const phoneCode = document.querySelector('#phone-code')
 const phone = document.querySelector('#phone')
 const password = document.querySelector('#password')
 const confirmPassword = document.querySelector('#confirm-password')
+const formBtn=document.querySelector('#form-btn')
+const form=document.querySelector('#form')
 
 // -- validaciones
 let usernameValidation = false;
@@ -21,14 +23,17 @@ let emailValidation= false;
 let phoneValidation=false;
 let passwordValidation =false;
 let confirmPasswordValidation=false;
+let contriesValidation=false
+
 // paso3.1
 // funcion para validacion estados input
 
-const validacion=(e, validacion,element)=>{
+const validation=(e, validacion,element)=>{
    
     // const texto= usernameInput.parentElement.children[1]
     const informacion= e.target.parentElement.children[1]
-   
+    formBtn.disabled =!usernameValidation || !emailValidation || !phoneValidation || !passwordValidation || !confirmPasswordValidation || ! contriesValidation ? true : false
+    
     if(validacion.value== ''){
         element.classList.remove('correct')
         element.classList.remove('incorrect')
@@ -52,23 +57,30 @@ const validacion=(e, validacion,element)=>{
 // estado
 usernameInput.addEventListener('input',e =>{
     usernameValidation= USERNAME_REGEX.test(e.target.value)
-    validacion(e,usernameValidation,usernameInput)//e= evento, usernameValidation =validacion ,usernameInput = input
+    validation(e,usernameValidation,usernameInput)//e= evento, usernameValidation =validacion ,usernameInput = input
     
 })
 
 emailInput.addEventListener('input',e =>{
     emailValidation= EMAIL_REGEX.test(e.target.value)
-    validacion(e,emailValidation,emailInput)
+    validation(e,emailValidation,emailInput)
 })
 // paso3.2 evento para seleccionar el pais y codigo de telf 
 countries.addEventListener('input',e =>{
     const optionSelected =[... e.target.children].find(option => option.selected);
     phoneCode.innerHTML=`+${optionSelected.value}`
+    contriesValidation = optionSelected.value ==''?false :true
+    console.log(contriesValidation);
+    countries.classList.add('correct')
+    phoneCode.classList.add('correct')
+    validation(e,null,null)//para que solo verifue la validacion de menos a delos paises
 })
 
 phone.addEventListener('input',e =>{
     phoneValidation= NUMBER_REGEX.test(e.target.value)
     const informacion= e.target.parentElement.parentElement.children[1]
+
+   
     if(phoneValidation.valueOf== ''){
         phone.classList.remove('correct')
         phone.classList.remove('incorrect')
@@ -82,15 +94,29 @@ phone.addEventListener('input',e =>{
         phone.classList.remove('correct')
         informacion.classList.add('show-informacion')
     }
+    
 })
 
 
 password.addEventListener('input',e =>{
     passwordValidation= PASSWORD_REGEX.test(e.target.value)
-    validacion(e,passwordValidation,password,)
+    validation(e,passwordValidation,password,)
     
 })
 confirmPassword.addEventListener('input',e=>{
     confirmPasswordValidation= e.target.value === password.value
-    validacion(e,confirmPasswordValidation,confirmPassword)
+    validation(e,confirmPasswordValidation,confirmPassword)
+})
+
+// evento para mostrar los datos en un objeto
+form.addEventListener('submit',e=>{
+    e.preventDefault() //para que la pagina no vuelva a cargar
+    const user={
+        username:usernameInput.value,
+        email:emailInput.value,
+        phone:`${phoneCode.innerHTML}${phone.value}`,       
+        password:password.value,       
+        phoneCode:phoneCode.value,
+    }
+    console.log(user);
 })
