@@ -6,3 +6,75 @@
     border-style: solid;
 }
 
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #115e59;
+    padding: 1rem;
+}
+#form{
+    background-color:#2dd4bf;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+
+}
+#form-title{
+    color: #fff;
+    margin: 0;
+    text-align: center;
+
+}
+.input-div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.form-input{
+    outline: none;
+    border:none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color:#115e59;
+    color: #fff;
+
+}
+.form-input::placeholder{
+    color: #fff;
+}
+.informacion{
+    margin: 0;
+    color:#fff;
+    display: none;
+}
+#phone-code{
+    background-color:#115e59;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+#phone-container{
+    display: flex;
+    gap: 1rem;
+}
+#phone{
+    width: 100%;
+}
+#form-btn{
+    background-color:#052e16;
+    padding: 1rem;
+    color:#fff;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+@media (min-width:640px){
+    #form{
+        width: 60%;
+    }
+}
