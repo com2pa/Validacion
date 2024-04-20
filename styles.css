@@ -73,8 +73,25 @@ body{
     cursor: pointer;
     border-radius: 0.5rem;
 }
+.correct{
+    outline:2px solid blue ;
+}
+.incorrect{
+    outline:2px solid red;
+}
+.show-informacion{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid white;
+    padding: 0.5rem;
+    background-color:#115e59;
+    display: block
+;
+}
 @media (min-width:640px){
     #form{
         width: 60%;
     }
+    
 }
