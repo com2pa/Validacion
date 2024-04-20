@@ -11,12 +11,16 @@ const countries = document.querySelector('#countries');
 const usernameInput = document.querySelector('#username');
 const emailInput=document.querySelector('#email');
 const phoneCode = document.querySelector('#phone-code')
+const phone = document.querySelector('#phone')
+const password = document.querySelector('#password')
+const confirmPassword = document.querySelector('#confirm-password')
 
 // -- validaciones
 let usernameValidation = false;
 let emailValidation= false;
-// let countriesValidation=false;
-
+let phoneValidation=false;
+let passwordValidation =false;
+let confirmPasswordValidation=false;
 // paso3.1
 // funcion para validacion estados input
 
@@ -62,3 +66,31 @@ countries.addEventListener('input',e =>{
     phoneCode.innerHTML=`+${optionSelected.value}`
 })
 
+phone.addEventListener('input',e =>{
+    phoneValidation= NUMBER_REGEX.test(e.target.value)
+    const informacion= e.target.parentElement.parentElement.children[1]
+    if(phoneValidation.valueOf== ''){
+        phone.classList.remove('correct')
+        phone.classList.remove('incorrect')
+        informacion.classList.remove('show-informacion')
+    }else if(phoneValidation){
+        phone.classList.add('correct')
+        phone.classList.remove('incorrect')
+        informacion.classList.remove('show-informacion')
+    }else{
+        phone.classList.add('incorrect')
+        phone.classList.remove('correct')
+        informacion.classList.add('show-informacion')
+    }
+})
+
+
+password.addEventListener('input',e =>{
+    passwordValidation= PASSWORD_REGEX.test(e.target.value)
+    validacion(e,passwordValidation,password,)
+    
+})
+confirmPassword.addEventListener('input',e=>{
+    confirmPasswordValidation= e.target.value === password.value
+    validacion(e,confirmPasswordValidation,confirmPassword)
+})
